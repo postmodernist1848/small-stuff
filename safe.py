@@ -1,3 +1,5 @@
+#небольшая школьная демонстрация эвентхука и ооп 
+
 class Event(object):
     def __init__(self):
         self.__eventhandlers = []

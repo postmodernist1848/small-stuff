@@ -1,3 +1,5 @@
+#русское поле экспериментов
+
 import matplotlib.pyplot as plt
 
 def binary_search(list, item): 
@@ -16,17 +18,25 @@ def binary_search(list, item):
             low = mid + 1
     return None
 
-my_list = range(1, 51)
-y_list = [binary_search(my_list, i) for i in my_list]
+import math
+def assss(n):
+    total = 0
+    for i in range(1, n+1):
+        total += i**(-1)
+    return (round(total - math.log(n), 3))
+
+x_list = range(1, 40000)
+
+y_list = [assss(i) for i in x_list]
 
 
-print(sum(y_list)/len(y_list))
+
 # plotting the points
-plt.plot(my_list, y_list)
+plt.plot(x_list, y_list)
 # naming the x axis
-plt.xlabel('искомое число')
+plt.xlabel('n')
 # naming the y axis
-plt.ylabel('кол-во попыток')
+plt.ylabel('"асимптотическое приближение"')
  
 # giving a title to my graph
 plt.title('график')

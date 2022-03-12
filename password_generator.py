@@ -1,3 +1,5 @@
+# генератор паролей с случайными символами
+
 from random import *
 import string
 

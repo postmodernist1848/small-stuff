@@ -1,3 +1,6 @@
+# this program features some sorts I wrote while reading 'grokking algorithms'
+
+
 import random
 
 def bogosort(array):

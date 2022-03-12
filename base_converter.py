@@ -1,3 +1,5 @@
+# эта программа позволяет переводить числа в десятичную систему счисления и наоборот
+
 def decimal_to_base(num, base):
     digits = list('0123456789ABCDEFGHIJKLMNOPQRSTUVWZXYZ')
     num = int(num)

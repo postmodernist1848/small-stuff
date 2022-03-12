@@ -1,4 +1,7 @@
-set1 = frozenset('beegeek')
-set2 = set('stepik')
+my_list1 = [1, 2, 4, 5]
+my_list2 = my_list1.copy()
 
-print(set2 | set1)
+my_list2[2] = 3
+
+print(my_list1)
+print(my_list2)
