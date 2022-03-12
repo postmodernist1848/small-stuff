@@ -1,3 +1,5 @@
+#этот код рисует несложный график пульса в терминале
+
 from time import sleep
 from os import system
 start = 5

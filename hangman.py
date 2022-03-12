@@ -1,4 +1,8 @@
 # coding=utf-8
+
+#        Игра 'висельница'
+
+
 import random
 from time import sleep
 from os import system
