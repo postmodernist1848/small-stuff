@@ -1,5 +1,5 @@
 #very simple search for ramanujan numbers, probably very uboptimized
-upper_bound = 40
+upper_bound = 100
 l = set()
 for a in range(1, upper_bound):
     for b in range(1, upper_bound):
