@@ -9,4 +9,5 @@ def wings(moth_part):
         img.show() 
         return ''
 
-
+def int(*args, **kwargs):
+    print('А хуй тебе!')
