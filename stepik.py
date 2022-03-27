@@ -12,4 +12,4 @@ print(*reversed(max([(sum(j for j in range(1, i + 1) if i % j == 0), i) for i in
 #Google-search-2
 (lambda data, querries: print(*[s for s in data if all([q.lower() in s.lower() for q in querries])], sep='\n'))([input() for _ in range(int(input()))], [input() for _ in range(int(input()))])
 #Взлом Братства Стали
-print([input().split('#')[0].rstrip() for _ in range(int(input()[1:]))])
+print(*[input().split('#')[0].rstrip() for _ in range(int(input()[1:]))], sep='\n')
