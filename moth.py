@@ -5,7 +5,10 @@ def wings(moth_part):
     if moth_part == 'right':
         return 'o/'
     elif moth_part == 'left':
-        img = Image.open('stalin.jpg')
+        try:
+            img = Image.open('stalin.jpg')
+        except FileNotFoundError:
+            raise FileNotFoundError("'stalin.jpg' not found in moth.py location. Please put stalin.jpg in the directory.")
         img.show() 
         return ''
 
@@ -18,15 +21,16 @@ def fc(n):
     else:
         return n * fc(n - 1) #recursive case
 
-
+memo_fib = {1: 1, 2: 1}
 def fib(n):
-    if n in memo:
-        return memo[n]
+    try:
+        if n in memo_fib:
+            return memo_fib[n]
+    except NameError:
+        raise NameError("'memo_fib' not found. To use moth fib function tou need to import memo_fib from moth")
+
     else:
         f1, f2 = fib(n - 1), fib(n - 2)
-        memo[n-1] = f1
-        memo[n-2] = f2
+        memo_fib[n-1] = f1
+        memo_fib[n-2] = f2
         return f1 + f2
-if __name__ == "__main__":        
-    memo = {1: 1, 2: 1}
-    print(*map(lambda x: fib(x), range(1, 100)))

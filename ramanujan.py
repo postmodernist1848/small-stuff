@@ -1,4 +1,4 @@
-#very simple search for ramanujan numbers, probably very uboptimized
+#very simple search for ramanujan numbers, probably very unoptimized
 upper_bound = 100
 l = set()
 for a in range(1, upper_bound):

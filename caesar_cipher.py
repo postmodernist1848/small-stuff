@@ -1,24 +1,61 @@
-#эта программа позволяет шифровать (и расшифровывать) русский или английский текст шифром Цезаря
-
+#эта программа позволяет шифровать (и расшифровывать) русский или английский текст шифром Цезаря и шифром Виженера
 
 import string
-def caesar(text, k):    
+
+def caesar_cipher(text:str, k:int) -> str:    
+    '''cipher (decipher) a string in caesar cipher'''
     s = ''
-    
-    if 1040 <= ord(text[0]) <= 1104:
-        alpha = ''.join([chr(i) for i in range(1040, 1105)])  
+    i = 0
+    while not text[i].isalpha():
+        i += 1
+        if i >= len(text):
+            return text
     else:
-        alpha = string.ascii_letters
+        if 1040 <= ord(text[i]) <= 1104:
+            alpha = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюя'
+        else:
+            alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+
     len_alpha = len(alpha) // 2    
     for c in text:
         if c.isalpha():
             pos = alpha.find(c) 
-            s += alpha[(pos + k) % len_alpha + len_alpha * (pos // len_alpha)]
+            s += alpha[(pos + k) % len_alpha + len_alpha * c.islower()]
         else:
             s += c
     return(s)
 
-print(caesar(input('Шифруемый текст: '), int(input('Сдвиг: '))))    
-'''words = input().split()
-for e in words:
-    print(caesar(e, len([c for c in e if c.isalpha()])), end = ' ')'''
+def vigenere_cipher(text:str, keyword:str) -> str:
+    '''cipher (decipher) a string in vigenere cipher'''
+    s = ''
+    i = 0
+    while not text[i].isalpha():
+        if not keyword.isalpha():
+            raise ValueError("Keyword is supposed to be a string of characters of English or Russian alphabet.")
+        else:
+            keyword = keyword.casefold()
+        i += 1
+        if i >= len(text):
+            return text
+    else:
+        if 1040 <= ord(text[i]) <= 1104:
+            alpha = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'  
+            text.replace('ё', 'e')
+        else:
+            alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    len_alpha = len(alpha) // 2
+    letter_count = 0
+    for c in text:
+        if c.isalpha():
+            keyword_pos = alpha[len_alpha:].find(keyword[letter_count % len(keyword)])
+            text_pos = alpha.find(c)
+            s += alpha[(text_pos + keyword_pos) % len_alpha + len_alpha * c.islower()]
+            letter_count += 1
+        else:
+            s += c
+    return s
+
+
+if __name__ == "__main__":
+    print(vigenere_cipher(input("Шифруемый текст: "), input("Ключевое слово: ")))
+
