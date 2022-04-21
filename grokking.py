@@ -30,7 +30,7 @@ def is_sorted(array):
             return 'Not sorted!'
     return 'Sorted!'
 
-my_list = [random.randint(1, 10000) for _ in range(100000000)]
+my_list = [random.randint(1, 10000) for _ in range(1000000)]
 sorted_list = quicksort(my_list)
 
 print('original list:', is_sorted(my_list))

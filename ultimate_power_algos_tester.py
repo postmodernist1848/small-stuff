@@ -1,6 +1,12 @@
 from time import time
 
-ITERATIONS = 1_000 #50_000 in C
+#include <shit.h>
+#include <suck.py.>
+#include <py.py>
+
+
+
+ITERATIONS = 25_000 #50_000 in C
 TEST_RANGE = 70
 
 
