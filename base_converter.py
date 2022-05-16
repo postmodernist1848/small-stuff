@@ -1,32 +1,39 @@
 # эта программа позволяет переводить числа в десятичную систему счисления и наоборот
 
-def decimal_to_base(num, base):
-    digits = list('0123456789ABCDEFGHIJKLMNOPQRSTUVWZXYZ')
-    num = int(num)
-    s = ''
-    while num > 0:
-        s += digits[num % base]
-        num = num // base
-    return s[::-1]
+ЦИФРЫ = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 
 
-flag = True
-while flag:
-    ans = input('1 - перевести в десятичную | 2 - перевести из десятичной: ')
-    if ans == '1':
-        flag = False
-        while True:
-            print(int(input('Введите число: '), int(input('Введите основание: '))))
-            if input('Еще? (Да/нет) ').lower() != 'да':
-                break
+def десятичная_в_систему(число, основание):
+    '''православная функция конвертации десятичного числа в СС от 2 до 69'''
+    if not 2 <= основание <= 69:
+        raise ValueError("2 <= Допустимая система счисления <= 69")
+    число = int(число)
+    строка = ''
+    while число > 0:
+        строка += ЦИФРЫ[число % основание]
+        число = число // основание
+    return строка[::-1]
 
-    elif ans == '2':
-        flag = False
-        while True:
-            print(decimal_to_base(input('Введите число: '), int(input('Введите основание: '))))
-            if input('Еще? (Да/нет) ').lower() != 'да':
-                    break
-    
-    else:
-        print('Ошибка #1: неверный ввод при выборе действия')
-        
+def система_в_десятичную(число, основание):
+    '''православная функция конвертации числа в любой СС от 2 до 69 в десятичную'''
+    if not 2 <= основание <= 69:
+        raise ValueError("2 <= Допустимая система счисления <= 69")
+    число = str(число)
+    рез = 0
+    for номер, цифра in enumerate(число):
+        рез += ЦИФРЫ.find(цифра) * основание**(len(число) - 1 - номер)
+    return рез
+
+
+from os import system
+system("clear")
+
+num = 1488
+base = 69
+print(f'{num} BASE 10 = {десятичная_в_систему(num, base)} BASE {base}')
+
+print('-'*50)
+nums = ['хуй', 'пизда', 'пиздёнка1488']
+base = 69
+for num in nums:
+    print(f'{num} BASE {base} = {система_в_десятичную(num, base)} BASE 10')
