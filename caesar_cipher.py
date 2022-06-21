@@ -40,7 +40,6 @@ def vigenere_cipher(text:str, keyword:str) -> str:
     else:
         if 1040 <= ord(text[i]) <= 1104:
             alpha = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'  
-            text.replace('ё', 'e')
         else:
             alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     len_alpha = len(alpha) // 2
