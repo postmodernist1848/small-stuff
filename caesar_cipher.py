@@ -1,7 +1,6 @@
 #эта программа позволяет шифровать (и расшифровывать) русский или английский текст шифром Цезаря и шифром Виженера
 
 import string
-
 def caesar_cipher(text:str, k:int) -> str:    
     '''cipher (decipher) a string in caesar cipher'''
     s = ''
@@ -54,7 +53,7 @@ def vigenere_cipher(text:str, keyword:str) -> str:
             s += c
     return s
 
-
+sdfasdf
 if __name__ == "__main__":
     print(vigenere_cipher(input("Шифруемый текст: "), input("Ключевое слово: ")))
 
